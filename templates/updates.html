@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Processing Updates</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f4f4f9;
+            color: #333;
+        }
+        header {
+            background-color: #0056b3;
+            color: white;
+            padding: 20px 0;
+            text-align: center;
+        }
+        header h1 {
+            margin: 0;
+            font-size: 2em;
+        }
+        main {
+            margin: 50px auto;
+            width: 80%;
+        }
+        .paper-card {
+            background-color: white;
+            padding: 20px;
+            border-radius: 5px;
+            border: 1px solid #ddd;
+            margin-bottom: 20px;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+        }
+        .paper-card p {
+            margin: 5px 0;
+        }
+        .info {
+            border-left: 5px solid #0056b3;
+        }
+        .success {
+            border-left: 5px solid #28a745;
+        }
+        .error {
+            border-left: 5px solid #dc3545;
+        }
+        footer {
+            background-color: #f4f4f9;
+            color: #666;
+            text-align: center;
+            padding: 20px 0;
+            margin-top: 50px;
+            border-top: 1px solid #ddd;
+        }
+        #updates {
+            margin-top: 20px;
+        }
+        .bold {
+            font-weight: bold;
+        }
+    </style>
+    <script>
+        function fetchUpdates() {
+            fetch("/get_updates")
+                .then(response => response.json())
+                .then(data => {
+                    const updatesDiv = document.getElementById("updates");
+                    updatesDiv.innerHTML = data.map(update => `
+                        <div class="paper-card ${update.type}">
+                            <p>${update.type === 'info' && update.message.includes('Paper') ?
+                                `<span class="bold">${update.message}</span>` : update.message}</p>
+                        </div>
+                    `).join('');
+                    updatesDiv.scrollTop = updatesDiv.scrollHeight; // Auto-scroll
+                });
+        }
+        setInterval(fetchUpdates, 2000); // Fetch updates every 2 seconds
+    </script>
+</head>
+<body>
+    <header>
+        <h1>AI Research Paper Finder</h1>
+    </header>
+    <main>
+        <h2>Processing Papers for Keyword: "{{ keyword }}"</h2>
+        <div id="updates">
+            <div class="paper-card info">
+                <p>Loading updates...</p>
+            </div>
+        </div>
+    </main>
+    <footer>
+        <p>&copy; 2024 AI Research Paper Finder. All rights reserved.</p>
+    </footer>
+</body>
+</html>

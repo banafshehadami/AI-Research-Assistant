@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AI Research Paper Finder</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f4f4f9;
+            color: #333;
+        }
+        header {
+            background-color: #0056b3;
+            color: white;
+            padding: 20px 0;
+            text-align: center;
+        }
+        header h1 {
+            margin: 0;
+            font-size: 2.5em;
+        }
+        main {
+            margin: 50px auto;
+            width: 60%;
+            text-align: center;
+        }
+        input[type="text"], input[type="number"] {
+            padding: 10px;
+            width: 80%;
+            margin: 10px 0;
+            font-size: 1.1em;
+        }
+        button {
+            padding: 10px 20px;
+            font-size: 1.1em;
+            background-color: #0056b3;
+            color: white;
+            border: none;
+            cursor: pointer;
+            border-radius: 5px;
+        }
+        button:hover {
+            background-color: #003d80;
+        }
+        footer {
+            background-color: #f4f4f9;
+            color: #666;
+            text-align: center;
+            padding: 20px 0;
+            margin-top: 50px;
+            border-top: 1px solid #ddd;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <h1>AI Research Paper Finder</h1>
+        <p>Powered by Google GenAI and arXiv</p>
+    </header>
+    <main>
+        <h2>Find and Summarize Research Papers Instantly</h2>
+        <form method="post" action="/">
+            <label for="keyword">Enter Keywords:</label><br>
+            <input type="text" id="keyword" name="keyword" placeholder="e.g., Deep Learning, AI Ethics" required><br>
+            <label for="num_papers">Number of Papers:</label><br>
+            <input type="number" id="num_papers" name="num_papers" placeholder="e.g., 5" min="1" max="50" required><br><br>
+            <button type="submit">Search Papers</button>
+        </form>
+    </main>
+    <footer>
+        <p>&copy; 2024 AI Research Paper Finder. All rights reserved.</p>
+    </footer>
+</body>
+</html>

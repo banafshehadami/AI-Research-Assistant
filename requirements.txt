@@ -1,0 +1,12 @@
+Flask==3.1.0           # Flask framework for backend
+pdfplumber             # Extract text from PDFs
+transformers==4.46.3   # Hugging Face Transformers for text processing
+google-generativeai    # Google GenAI for summarization
+arxiv==2.1.3           # arXiv API for searching papers
+scholarly==1.7.11      # Scholarly API for citation and metadata
+beautifulsoup4==4.12.3 # Parsing HTML (if used for scraping)
+requests               # For HTTP requests
+tqdm                   # For progress bars (if used)
+numpy                  # General numerical operations (if used)
+pandas                 # Data handling and manipulation (if used)
+werkzeug==3.1.3        # Core Flask dependency

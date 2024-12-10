@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Search Results</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f4f4f9;
+            color: #333;
+        }
+        header {
+            background-color: #0056b3;
+            color: white;
+            padding: 20px 0;
+            text-align: center;
+        }
+        header h1 {
+            margin: 0;
+            font-size: 2.5em;
+        }
+        main {
+            margin: 50px auto;
+            width: 80%;
+        }
+        ul {
+            list-style-type: none;
+            padding: 0;
+        }
+        li {
+            margin-bottom: 30px;
+            padding: 20px;
+            border: 1px solid #ddd;
+            background: white;
+            border-radius: 5px;
+        }
+        li h3 {
+            margin: 0;
+            color: #0056b3;
+        }
+        li p {
+            margin: 5px 0;
+        }
+        li a {
+            color: #0056b3;
+            text-decoration: none;
+        }
+        li a:hover {
+            text-decoration: underline;
+        }
+        footer {
+            background-color: #f4f4f9;
+            color: #666;
+            text-align: center;
+            padding: 20px 0;
+            margin-top: 50px;
+            border-top: 1px solid #ddd;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <h1>AI Research Paper Finder</h1>
+    </header>
+    <main>
+        <h2>Results for "{{ keyword }}"</h2>
+        {% if papers %}
+            <ul>
+                {% for paper in papers %}
+                    <li>
+                        <h3>{{ paper.title }}</h3>
+                        <p><strong>Authors:</strong>
+                            {{ paper.authors|join(', ') if paper.authors else "No authors listed" }}
+                        </p>
+                        <p><strong>Year:</strong> {{ paper.year }}</p>
+                        <p><strong>Abstract:</strong> {{ paper.abstract or "No abstract available." }}</p>
+                        <p><strong>Summary:</strong> {{ paper.summary }}</p>
+                        <a href="{{ paper.url }}" target="_blank">Read Full Paper</a>
+                    </li>
+                {% endfor %}
+            </ul>
+        {% else %}
+            <p>No papers found for the given keywords.</p>
+        {% endif %}
+        <a href="/" style="text-decoration: none; color: #0056b3;">Search Again</a>
+    </main>
+    <footer>
+        <p>&copy; 2024 AI Research Paper Finder. All rights reserved.</p>
+    </footer>
+</body>
+</html>
